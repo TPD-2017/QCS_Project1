@@ -15,7 +15,7 @@ public class Client {
 
         /*SO PARA TESTES*/
         InsulinDoseCalculator proxy = service.getInsulinDoseCalculatorPort();
-        int bolus_ins_replace_dose = proxy.mealtimeInsulinDose(120.0, 14.0, 170.0, 100.0, 60.0);
+        int bolus_ins_replace_dose = proxy.mealtimeInsulinDose(60.0, 12.0, 200.0, 100.0, 25.0);
         int back_ins = proxy.backgroundInsulinDose(79.0);
         ArrayList<Double> lista1 = new ArrayList<>();
         ArrayList<Double> lista2 = new ArrayList<>();
