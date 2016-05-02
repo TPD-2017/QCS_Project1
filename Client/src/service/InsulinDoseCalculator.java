@@ -40,11 +40,26 @@ public interface InsulinDoseCalculator {
     @Action(input = "http://server/InsulinDoseCalculator/personalSensitivityToInsulinRequest", output = "http://server/InsulinDoseCalculator/personalSensitivityToInsulinResponse")
     public int personalSensitivityToInsulin(
         @WebParam(name = "arg0", targetNamespace = "")
-        double arg0,
+        int arg0,
         @WebParam(name = "arg1", targetNamespace = "")
-        List<Double> arg1,
+        List<Integer> arg1,
         @WebParam(name = "arg2", targetNamespace = "")
-        List<Double> arg2);
+        List<Integer> arg2);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "backgroundInsulinDose", targetNamespace = "http://server/", className = "service.BackgroundInsulinDose")
+    @ResponseWrapper(localName = "backgroundInsulinDoseResponse", targetNamespace = "http://server/", className = "service.BackgroundInsulinDoseResponse")
+    @Action(input = "http://server/InsulinDoseCalculator/backgroundInsulinDoseRequest", output = "http://server/InsulinDoseCalculator/backgroundInsulinDoseResponse")
+    public int backgroundInsulinDose(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
 
     /**
      * 
@@ -63,29 +78,14 @@ public interface InsulinDoseCalculator {
     @Action(input = "http://server/InsulinDoseCalculator/mealtimeInsulinDoseRequest", output = "http://server/InsulinDoseCalculator/mealtimeInsulinDoseResponse")
     public int mealtimeInsulinDose(
         @WebParam(name = "arg0", targetNamespace = "")
-        double arg0,
+        int arg0,
         @WebParam(name = "arg1", targetNamespace = "")
-        double arg1,
+        int arg1,
         @WebParam(name = "arg2", targetNamespace = "")
-        double arg2,
+        int arg2,
         @WebParam(name = "arg3", targetNamespace = "")
-        double arg3,
+        int arg3,
         @WebParam(name = "arg4", targetNamespace = "")
-        double arg4);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "backgroundInsulinDose", targetNamespace = "http://server/", className = "service.BackgroundInsulinDose")
-    @ResponseWrapper(localName = "backgroundInsulinDoseResponse", targetNamespace = "http://server/", className = "service.BackgroundInsulinDoseResponse")
-    @Action(input = "http://server/InsulinDoseCalculator/backgroundInsulinDoseRequest", output = "http://server/InsulinDoseCalculator/backgroundInsulinDoseResponse")
-    public int backgroundInsulinDose(
-        @WebParam(name = "arg0", targetNamespace = "")
-        double arg0);
+        int arg4);
 
 }

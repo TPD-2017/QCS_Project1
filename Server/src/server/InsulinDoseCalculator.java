@@ -12,10 +12,10 @@ import javax.jws.WebMethod;
 public interface InsulinDoseCalculator {
 
     @WebMethod
-    int mealtimeInsulinDose(double total_ch2o_in_meal, double total_ch2o_proc_unit_rai, double actual_bloodsuger_level, double target_bloddsugar, double ind_sensivity);
+    int mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity);
     @WebMethod
-    int backgroundInsulinDose(double weight);
+    int backgroundInsulinDose(int bodyWeight);
     @WebMethod
-    int personalSensitivityToInsulin(double self_act_lvl, double[] ksomeday, double[] kdropssugar);
+    int personalSensitivityToInsulin(int physicalActivityLevel, int[] physicalActivitySamples, int[] bloodSugarDropSamples);
 
 }

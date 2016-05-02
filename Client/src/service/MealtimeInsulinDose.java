@@ -16,11 +16,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg3" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg4" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="arg3" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="arg4" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,17 +39,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class MealtimeInsulinDose {
 
-    protected double arg0;
-    protected double arg1;
-    protected double arg2;
-    protected double arg3;
-    protected double arg4;
+    protected int arg0;
+    protected int arg1;
+    protected int arg2;
+    protected int arg3;
+    protected int arg4;
 
     /**
      * Gets the value of the arg0 property.
      * 
      */
-    public double getArg0() {
+    public int getArg0() {
         return arg0;
     }
 
@@ -57,7 +57,7 @@ public class MealtimeInsulinDose {
      * Sets the value of the arg0 property.
      * 
      */
-    public void setArg0(double value) {
+    public void setArg0(int value) {
         this.arg0 = value;
     }
 
@@ -65,7 +65,7 @@ public class MealtimeInsulinDose {
      * Gets the value of the arg1 property.
      * 
      */
-    public double getArg1() {
+    public int getArg1() {
         return arg1;
     }
 
@@ -73,7 +73,7 @@ public class MealtimeInsulinDose {
      * Sets the value of the arg1 property.
      * 
      */
-    public void setArg1(double value) {
+    public void setArg1(int value) {
         this.arg1 = value;
     }
 
@@ -81,7 +81,7 @@ public class MealtimeInsulinDose {
      * Gets the value of the arg2 property.
      * 
      */
-    public double getArg2() {
+    public int getArg2() {
         return arg2;
     }
 
@@ -89,7 +89,7 @@ public class MealtimeInsulinDose {
      * Sets the value of the arg2 property.
      * 
      */
-    public void setArg2(double value) {
+    public void setArg2(int value) {
         this.arg2 = value;
     }
 
@@ -97,7 +97,7 @@ public class MealtimeInsulinDose {
      * Gets the value of the arg3 property.
      * 
      */
-    public double getArg3() {
+    public int getArg3() {
         return arg3;
     }
 
@@ -105,7 +105,7 @@ public class MealtimeInsulinDose {
      * Sets the value of the arg3 property.
      * 
      */
-    public void setArg3(double value) {
+    public void setArg3(int value) {
         this.arg3 = value;
     }
 
@@ -113,7 +113,7 @@ public class MealtimeInsulinDose {
      * Gets the value of the arg4 property.
      * 
      */
-    public double getArg4() {
+    public int getArg4() {
         return arg4;
     }
 
@@ -121,7 +121,7 @@ public class MealtimeInsulinDose {
      * Sets the value of the arg4 property.
      * 
      */
-    public void setArg4(double value) {
+    public void setArg4(int value) {
         this.arg4 = value;
     }
 

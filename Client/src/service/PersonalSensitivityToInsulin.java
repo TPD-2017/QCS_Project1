@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}double" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}double" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}int" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,17 +38,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class PersonalSensitivityToInsulin {
 
-    protected double arg0;
+    protected int arg0;
     @XmlElement(nillable = true)
-    protected List<Double> arg1;
+    protected List<Integer> arg1;
     @XmlElement(nillable = true)
-    protected List<Double> arg2;
+    protected List<Integer> arg2;
 
     /**
      * Gets the value of the arg0 property.
      * 
      */
-    public double getArg0() {
+    public int getArg0() {
         return arg0;
     }
 
@@ -56,7 +56,7 @@ public class PersonalSensitivityToInsulin {
      * Sets the value of the arg0 property.
      * 
      */
-    public void setArg0(double value) {
+    public void setArg0(int value) {
         this.arg0 = value;
     }
 
@@ -78,13 +78,13 @@ public class PersonalSensitivityToInsulin {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Double }
+     * {@link Integer }
      * 
      * 
      */
-    public List<Double> getArg1() {
+    public List<Integer> getArg1() {
         if (arg1 == null) {
-            arg1 = new ArrayList<Double>();
+            arg1 = new ArrayList<Integer>();
         }
         return this.arg1;
     }
@@ -107,13 +107,13 @@ public class PersonalSensitivityToInsulin {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Double }
+     * {@link Integer }
      * 
      * 
      */
-    public List<Double> getArg2() {
+    public List<Integer> getArg2() {
         if (arg2 == null) {
-            arg2 = new ArrayList<Double>();
+            arg2 = new ArrayList<Integer>();
         }
         return this.arg2;
     }

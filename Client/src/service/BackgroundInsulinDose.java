@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,13 +31,13 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class BackgroundInsulinDose {
 
-    protected double arg0;
+    protected int arg0;
 
     /**
      * Gets the value of the arg0 property.
      * 
      */
-    public double getArg0() {
+    public int getArg0() {
         return arg0;
     }
 
@@ -45,7 +45,7 @@ public class BackgroundInsulinDose {
      * Sets the value of the arg0 property.
      * 
      */
-    public void setArg0(double value) {
+    public void setArg0(int value) {
         this.arg0 = value;
     }
 
