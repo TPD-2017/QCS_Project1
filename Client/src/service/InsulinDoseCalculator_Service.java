@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "InsulinDoseCalculator", targetNamespace = "http://server/", wsdlLocation = "http://localhost:8080/?wsdl")
+@WebServiceClient(name = "InsulinDoseCalculator", targetNamespace = "http://server/", wsdlLocation = "http://qcsproject1-qcsproject.rhcloud.com/InsulinDoseCalculator/?wsdl")
 public class InsulinDoseCalculator_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class InsulinDoseCalculator_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/?wsdl");
+            url = new URL("http://qcsproject1-qcsproject.rhcloud.com/InsulinDoseCalculator/?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
@@ -70,6 +70,18 @@ public class InsulinDoseCalculator_Service
     @WebEndpoint(name = "InsulinDoseCalculatorPort")
     public InsulinDoseCalculator getInsulinDoseCalculatorPort() {
         return super.getPort(new QName("http://server/", "InsulinDoseCalculatorPort"), InsulinDoseCalculator.class);
+    }
+
+    /**
+     *
+     * @param namespace
+     * @param port
+     * @return
+     *     returns Insulin
+     */
+    //@WebEndpoint(name = "InsulinPort")
+    public InsulinDoseCalculator getInsulinDoseCalculatorPort(String namespace, String port) {
+        return super.getPort(new QName(namespace, port), InsulinDoseCalculator.class);
     }
 
     /**
