@@ -17,6 +17,7 @@ class Voter {
     Map<Integer, Integer> results;
     List<WebServiceHandler> webservices;
 
+    //Cada servico deverá ser colocado numa thread para executar.
     Voter(){
         results = new HashMap<>();
 
@@ -31,6 +32,8 @@ class Voter {
         webservices.add(new WebServiceHandler("http://qcsa1-ran1234.rhcloud.com/server/InsulinDoseCalculator?wsdl","InsulinDoseCalculatorService", "InsulinDoseCalculatorPort", "http://server/"));
     }
 
+
+    //Voter que pega nos results e verifica o que está em maioria.
     void Majority(){
         int max = -1;
         int mostFrequent = -1;
@@ -45,6 +48,8 @@ class Voter {
         System.out.println("Resultado do votador: " + mostFrequent);
     }
 
+
+    //So para testes
     void TestVoter(){
 
         InsulinDoseCalculator proxy = null;
@@ -78,6 +83,11 @@ class Voter {
     }
 }
 
-class Connection extends Thread{
+//A Thread do servico.
+class Connection extends Thread {
 
+    @Override
+    public void run(){
+
+    }
 }
