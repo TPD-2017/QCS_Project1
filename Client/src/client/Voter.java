@@ -67,10 +67,12 @@ class Voter {
                 lista2.add(61);
                 lista2.add(91);
                 lista2.add(88);
-                //int singleresult = proxy.backgroundInsulinDose(79);
-                int singleresult = proxy.mealtimeInsulinDose(95, 10, 100, 120, 50);
+                int singleresult = proxy.backgroundInsulinDose(79);
+                //int singleresult = proxy.mealtimeInsulinDose(95, 10, 100, 120, 50);
                 //int singleresult = proxy.personalSensitivityToInsulin(4, lista1, lista2);
                 System.out.println("Single result: " + singleresult);
+
+                //STAMM isto é importante. adicona os valores ao hasMap já com a frequencia que saiem.
                 Integer freq = results.get(singleresult);
                 results.put(singleresult, (freq == null) ? 1 : freq + 1);
 
