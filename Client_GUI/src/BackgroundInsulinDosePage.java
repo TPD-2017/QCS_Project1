@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 public class BackgroundInsulinDosePage {
     private JPanel BackgroundInsulinDoseView;
     private JButton backButton;
+    private JButton calculateButton;
+    private JTextField textField1;
+    private JTextArea textArea1;
 
     public BackgroundInsulinDosePage() {
         backButton.addActionListener(new ActionListener() {
