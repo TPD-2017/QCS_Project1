@@ -59,7 +59,7 @@ public class HomePage {
     }
 
     public static void main(String[] args) {
-        frame = new JFrame("HomePage");
+        frame = new JFrame("Highly Reliable Insulin Dose Calculator");
         frame.setContentPane(new HomePage().HomePageView);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
