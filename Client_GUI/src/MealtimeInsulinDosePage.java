@@ -43,7 +43,7 @@ public class MealtimeInsulinDosePage {
                     int actualBloodSugarLevel = Integer.parseInt(i3);
                     int targetBloodSugarLevel = Integer.parseInt(i4);
                     int individualSensivity = Integer.parseInt(i5);
-                    if (carbohydratesInTheMeal>=60 && carbohydratesInTheMeal<=120 && carbohydratesProcessedBy1UnitOfInsulin<=10
+                    if (carbohydratesInTheMeal>=60 && carbohydratesInTheMeal<=120 && carbohydratesProcessedBy1UnitOfInsulin>=10
                             && carbohydratesProcessedBy1UnitOfInsulin<=15 && actualBloodSugarLevel>=120 && actualBloodSugarLevel<=250
                             && targetBloodSugarLevel>=80 && targetBloodSugarLevel<=120 && individualSensivity>=15 && individualSensivity<=100) {
                         // FAZER AQUI CHAMADA A FUNCAO
