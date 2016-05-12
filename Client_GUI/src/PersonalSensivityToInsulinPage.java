@@ -42,6 +42,8 @@ public class PersonalSensivityToInsulinPage {
                     {
                         // FAZER AQUI CHAMADA A FUNCAO!
                         textField1.setText(physicalActivityLevel+"");
+                    } else {
+                        textField1.setText("Invalid Input");
                     }
                 } catch (NumberFormatException n){
                     textField1.setText("Invalid Input");

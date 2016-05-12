@@ -136,7 +136,9 @@
             <preferred-size width="200" height="24"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <editable value="false"/>
+        </properties>
       </component>
       <vspacer id="c7733">
         <constraints>

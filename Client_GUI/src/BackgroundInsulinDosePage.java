@@ -24,6 +24,25 @@ public class BackgroundInsulinDosePage {
                 frame.validate();
             }
         });
+
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String i1 = textArea1.getText();
+                try {
+                    int weight = Integer.parseInt(i1);
+                    if (weight>=40 && weight<=130) {
+                        // FAZER AQUI CHAMADA A FUNCAO!
+                        int result = 0;
+                        textField1.setText(result+"");
+                    } else {
+                        textField1.setText("Invalid Input");
+                    }
+                } catch (NumberFormatException n) {
+                    textField1.setText("Invalid Input");
+                }
+            }
+        });
     }
 
     public JPanel getBackgroundInsulinDoseView() {
