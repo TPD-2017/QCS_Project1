@@ -30,21 +30,6 @@ public class Voter {
         webservices.add(new WebServiceHandler("http://qcsa1-ran1234.rhcloud.com/server/InsulinDoseCalculator?wsdl","InsulinDoseCalculatorService", "InsulinDoseCalculatorPort", "http://server/", this));
     }
 
-    /*public static void main(String args[]){
-        new Voter().testVoter();
-    }*/
-
-    public void calculateInsulinDose(){
-        this.results.clear();
-        WebServiceHandler webservice = webservices.get(0);
-        //FUCKING 7 HOURS FOR THIS
-        //Mas pelo menos descobri como raios correr threads SEM ficar preso ao método run()
-        new Thread(webservice::calculateInsulinDose).start();
-        for(WebServiceHandler x: webservices){
-            new Thread(x::calculateInsulinDose).start();
-        }
-    }
-
     public int getPrecision() {
         return precision;
     }
@@ -56,4 +41,20 @@ public class Voter {
     public Map<Integer, Integer> getResults() {
         return results;
     }
+
+
+
+    /*public static void main(String args[]){
+        new Voter().testVoter();
+    }*/
+
+    public void calculateInsulinDose(){
+        this.results.clear();
+        WebServiceHandler webservice = webservices.get(0);
+        new Thread(webservice::calculateInsulinDose).start();
+        for(WebServiceHandler x: webservices){
+            new Thread(x::calculateInsulinDose).start();
+        }
+    }
+
 }
