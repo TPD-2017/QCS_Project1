@@ -2,31 +2,49 @@ package client;
 
 import service.InsulinDoseCalculator;
 import service.InsulinDoseCalculator_Service;
+
+import javax.xml.namespace.QName;
 import java.net.MalformedURLException;
 import java.net.URL;
-import javax.print.attribute.standard.MediaSize;
-import javax.xml.namespace.QName;
 
-public class WebServiceHandler {
+public class WebServiceHandler{
 
     private String URL;
     private String SERVICE_NAME;
     private String PORT;
     private String NAMESPACE;
 
+    private Voter voter;
+
     private InsulinDoseCalculator_Service service;
     private InsulinDoseCalculator proxy;
 
-    public WebServiceHandler(String URL, String SERVICE_NAME, String PORT, String NAMESPACE) {
+    public WebServiceHandler(String URL, String SERVICE_NAME, String PORT, String NAMESPACE, Voter voter) {
         this.URL = URL;
         this.SERVICE_NAME = SERVICE_NAME;
         this.PORT = PORT;
         this.NAMESPACE = NAMESPACE;
-
+        this.voter=voter;
     }
 
     public String getURL() {
         return URL;
+    }
+
+    public void calculateInsulinDose(){
+        try {
+            InsulinDoseCalculator proxy = this.getProxy();
+            int singleresult = proxy.backgroundInsulinDose(79);
+            System.out.println("Single result: " + singleresult);
+            Integer freq = this.getVoter().getResults().get(singleresult);
+            this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Calculating Insulin Dose broke.");
+            int singleresult = -1;
+            Integer freq = this.getVoter().getResults().get(singleresult);
+            this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+        }
     }
 
     public InsulinDoseCalculator getProxy() throws Exception {
@@ -42,5 +60,9 @@ public class WebServiceHandler {
         }
 
         return proxy;
+    }
+
+    public Voter getVoter() {
+        return voter;
     }
 }

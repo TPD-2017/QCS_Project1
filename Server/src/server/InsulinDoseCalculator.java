@@ -1,10 +1,5 @@
 package server;
 
-/**
- * Created by Tiago Andrade on 01/05/2016.
- *
- */
-
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 
