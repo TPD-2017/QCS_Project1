@@ -30,11 +30,11 @@ public class Voter {
         webservices.add(new WebServiceHandler("http://qcsa1-ran1234.rhcloud.com/server/InsulinDoseCalculator?wsdl","InsulinDoseCalculatorService", "InsulinDoseCalculatorPort", "http://server/", this));
     }
 
-    public static void main(String args[]){
+    /*public static void main(String args[]){
         new Voter().testVoter();
-    }
+    }*/
 
-    public void testVoter(){
+    public void calculateInsulinDose(){
         this.results.clear();
         WebServiceHandler webservice = webservices.get(0);
         //FUCKING 7 HOURS FOR THIS
