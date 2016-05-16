@@ -16,6 +16,12 @@ public class Voter {
     private Map<Integer, Integer> results;
     private List<WebServiceHandler> webservices;
 
+    public int getMostfreqent() {
+        return mostfreqent;
+    }
+
+    private int mostfreqent = -1;
+
     public Voter(){
         results = new HashMap<>();
 
@@ -25,8 +31,8 @@ public class Voter {
         webservices.add(new WebServiceHandler("http://qcsa1-beardsdei.rhcloud.com/qcsa1/InsulinDoseCalculator?wsdl","InsulinDoseCalculatorService", "InsulinDoseCalculatorPort", "http://server/", this));
         webservices.add(new WebServiceHandler("http://insulincalculator-aybareon.rhcloud.com:80/InsulinCalculatorTomcat/InsulinCalculator?wsdl","InsulinCalculator", "InsulinCalculatorPort", "http://server/", this));
         webservices.add(new WebServiceHandler("http://webservice-sqdcourse.rhcloud.com/InsulinDoseCalculator?wsdl","InsulinDoseCalculatorService", "InsulinDoseCalculatorPort", "http://server/", this));
-        webservices.add(new WebServiceHandler("http://qcs07.dei.uc.pt:8080/InsulinCalculator?wsdl","InsulinCalculatorService", "InsulinCalculatorPort", "http://server/", this));
-        webservices.add(new WebServiceHandler("http://sgd46.dei.uc.pt:8088/InsulinDoseCalculator?wsdl","InsulindDoseCalculator", "InsulinDoseCalculatorPort", "http://server/", this));
+        //webservices.add(new WebServiceHandler("http://qcs07.dei.uc.pt:8080/InsulinCalculator?wsdl","InsulinCalculatorService", "InsulinCalculatorPort", "http://server/", this));
+        //webservices.add(new WebServiceHandler("http://sgd46.dei.uc.pt:8088/InsulinDoseCalculator?wsdl","InsulindDoseCalculator", "InsulinDoseCalculatorPort", "http://server/", this));
         webservices.add(new WebServiceHandler("http://qcsa1-ran1234.rhcloud.com/server/InsulinDoseCalculator?wsdl","InsulinDoseCalculatorService", "InsulinDoseCalculatorPort", "http://server/", this));
     }
 
@@ -42,19 +48,49 @@ public class Voter {
         return results;
     }
 
-
-
-    /*public static void main(String args[]){
-        new Voter().testVoter();
-    }*/
-
-    public void calculateInsulinDose(){
+    public void calculateInsulinDose(int bodyWeight){
         this.results.clear();
-        WebServiceHandler webservice = webservices.get(0);
-        new Thread(webservice::calculateInsulinDose).start();
+        //WebServiceHandler webservice = webservices.get(0);
+        //new Thread(webservice::calculateInsulinDose).start();
         for(WebServiceHandler x: webservices){
-            new Thread(x::calculateInsulinDose).start();
+            new Thread(()-> x.calculateInsulinDose(bodyWeight)).start();
         }
+    }
+
+    public void mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity){
+        this.results.clear();
+        //WebServiceHandler webservice = webservices.get(0);
+        //new Thread(webservice::calculateInsulinDose).start();
+        for(WebServiceHandler x: webservices){
+            new Thread(() -> x.mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity)).start();
+        }
+    }
+
+    public void personalSensitivityToInsulin(int physicalActivityLevel, ArrayList<Integer> physicalActivitySamples, ArrayList<Integer> bloodSugarDropSamples){
+        this.results.clear();
+        //WebServiceHandler webservice = webservices.get(0);
+        //new Thread(webservice::calculateInsulinDose).start();
+        for(WebServiceHandler x: webservices){
+            new Thread(()->x.personalSensitivityToInsulin(physicalActivityLevel, physicalActivitySamples, bloodSugarDropSamples)).start();
+        }
+    }
+
+    public void majority(){
+        System.out.println("Doing the majority");
+        int max = -1;
+        int mostFrequent = -1;
+
+        System.out.println("Size: "+results.size());
+        for(Map.Entry<Integer, Integer> x: results.entrySet()){
+            System.out.println(x.getKey());
+            //Metade do numero total de webservices testados
+            if (x.getValue() > max && x.getValue() >= (results.size() / 2)) {
+                mostFrequent = x.getKey();
+                max = x.getValue();
+            }
+        }
+        mostfreqent = mostFrequent;
+        System.out.println("Resultado do votador: " + mostFrequent);
     }
 
 }

@@ -1,6 +1,11 @@
+import client.Voter;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by dbast on 12/05/2016.
@@ -41,7 +46,17 @@ public class PersonalSensivityToInsulinPage {
                             && kSamplesOfPhysicalActivity<=10 && kSamplesDropsInBloodSugar>=15 && kSamplesDropsInBloodSugar<=100)
                     {
                         // FAZER AQUI CHAMADA A FUNCAO!
-                        textField1.setText(physicalActivityLevel+"");
+                        Voter voter = new Voter();
+
+                        //voter.
+                        try {
+                            sleep(4000);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        voter.majority();
+                        int result = voter.getMostfreqent();
+                        textField1.setText(result+"");
                     } else {
                         textField1.setText("Invalid Input");
                     }

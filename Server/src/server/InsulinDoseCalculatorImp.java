@@ -11,16 +11,16 @@ public class InsulinDoseCalculatorImp implements InsulinDoseCalculator {
     @Override
     public int mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity){
 
-        if(carbohydrateAmount < 60 || carbohydrateAmount > 120){
+        if(carbohydrateAmount < 30 || carbohydrateAmount > 150){
             return -1;
         }
-        if(carbohydrateToInsulinRatio < 10 || carbohydrateToInsulinRatio > 15){
+        if(carbohydrateToInsulinRatio < 5 || carbohydrateToInsulinRatio > 20){
             return -1;
         }
-        if(preMealBloodSugar < 120 || preMealBloodSugar > 250){
+        if(preMealBloodSugar < 50 || preMealBloodSugar > 275){
             return -1;
         }
-        if(targetBloodSugar < 80 || targetBloodSugar > 120){
+        if(targetBloodSugar < 40 || targetBloodSugar > 150){
             return -1;
         }
         if(personalSensitivity < 15 || personalSensitivity > 100){
@@ -39,7 +39,7 @@ public class InsulinDoseCalculatorImp implements InsulinDoseCalculator {
 
     @Override
     public int backgroundInsulinDose(int bodyWeight){
-        if(bodyWeight < 40 || bodyWeight > 130) return -1;
+        if(bodyWeight < 30 || bodyWeight > 250) return -1;
         double back_ins = (0.55 * (double) bodyWeight)*0.5;
         return (int)Math.round(back_ins);
     }
@@ -55,7 +55,7 @@ public class InsulinDoseCalculatorImp implements InsulinDoseCalculator {
             }
         }
         for (int x : bloodSugarDropSamples){
-            if(x < 15 || x > 100){
+            if(x < 10 || x > 150){
                 return -1;
             }
         }

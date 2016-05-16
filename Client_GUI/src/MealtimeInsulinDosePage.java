@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import client.Voter;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by dbast on 12/05/2016.
@@ -44,10 +47,18 @@ public class MealtimeInsulinDosePage {
                     int targetBloodSugarLevel = Integer.parseInt(i4);
                     int individualSensivity = Integer.parseInt(i5);
                     if (carbohydratesInTheMeal>=60 && carbohydratesInTheMeal<=120 && carbohydratesProcessedBy1UnitOfInsulin>=10
-                            && carbohydratesProcessedBy1UnitOfInsulin<=15 && actualBloodSugarLevel>=120 && actualBloodSugarLevel<=250
+                            && carbohydratesProcessedBy1UnitOfInsulin<=15 && actualBloodSugarLevel>=50 && actualBloodSugarLevel<=250
                             && targetBloodSugarLevel>=80 && targetBloodSugarLevel<=120 && individualSensivity>=15 && individualSensivity<=100) {
                         // FAZER AQUI CHAMADA A FUNCAO
-                        int result = 0;
+                        Voter voter = new Voter();
+                        voter.mealtimeInsulinDose(carbohydratesInTheMeal, carbohydratesProcessedBy1UnitOfInsulin, actualBloodSugarLevel, targetBloodSugarLevel, individualSensivity);
+                        try {
+                            sleep(4000);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        voter.majority();
+                        int result = voter.getMostfreqent();
                         textField1.setText(result+"");
                     } else {
                         textField1.setText("Invalid Input");

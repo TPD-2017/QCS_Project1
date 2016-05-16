@@ -1,6 +1,10 @@
+import client.Voter;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by dbast on 12/05/2016.
@@ -33,7 +37,15 @@ public class BackgroundInsulinDosePage {
                     int weight = Integer.parseInt(i1);
                     if (weight>=40 && weight<=130) {
                         // FAZER AQUI CHAMADA A FUNCAO!
-                        int result = 0;
+                        Voter voter = new Voter();
+                        voter.calculateInsulinDose(weight);
+                        try {
+                            sleep(4000);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        voter.majority();
+                        int result = voter.getMostfreqent();
                         textField1.setText(result+"");
                     } else {
                         textField1.setText("Invalid Input");
