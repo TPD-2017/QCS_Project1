@@ -264,7 +264,10 @@ public class Voter {
     public String technicalDetail(){
         String text = "";
         for(Map.Entry<String, Integer> x: technical_details.entrySet()){
-            text += x.getKey() +": "+x.getValue()+"\n";
+            if(x.getKey().equals("webservices") || x.getKey().equals("majority") || x.getKey().equals("error") || x.getKey().equals("timeout"))
+                text += x.getKey() +": "+x.getValue()+"\n";
+            else
+                text += "Result " + x.getKey() +": "+x.getValue()+"\n";
         }
         return text;
     }
