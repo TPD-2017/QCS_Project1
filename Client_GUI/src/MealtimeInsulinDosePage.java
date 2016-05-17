@@ -13,11 +13,12 @@ public class MealtimeInsulinDosePage {
     private JButton calculateButton;
     private JTextField textField1;
     private JButton backButton;
-    private JTextArea textArea1;
-    private JTextArea textArea2;
-    private JTextArea textArea3;
-    private JTextArea textArea4;
-    private JTextArea textArea5;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField5;
+    private JTextField textField6;
+    private JButton seeDetailsButton;
 
     public MealtimeInsulinDosePage() {
         backButton.addActionListener(new ActionListener() {
@@ -35,11 +36,11 @@ public class MealtimeInsulinDosePage {
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String i1 = textArea1.getText();
-                String i2 = textArea2.getText();
-                String i3 = textArea3.getText();
-                String i4 = textArea4.getText();
-                String i5 = textArea5.getText();
+                String i1 = textField2.getText();
+                String i2 = textField3.getText();
+                String i3 = textField4.getText();
+                String i4 = textField5.getText();
+                String i5 = textField6.getText();
                 try {
                     int carbohydratesInTheMeal = Integer.parseInt(i1);
                     int carbohydratesProcessedBy1UnitOfInsulin = Integer.parseInt(i2);
@@ -66,6 +67,18 @@ public class MealtimeInsulinDosePage {
                 } catch (NumberFormatException n) {
                     textField1.setText("Invalid Input");
                 }
+            }
+        });
+
+        seeDetailsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame detailsFrame = new JFrame("Mealtime Insulin Calculator Details");
+                detailsFrame.setContentPane(new Details().DetailsView);
+                //detailsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                detailsFrame.setResizable(false);
+                detailsFrame.pack();
+                detailsFrame.setVisible(true);
             }
         });
     }

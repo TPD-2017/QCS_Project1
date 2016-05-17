@@ -14,7 +14,8 @@ public class BackgroundInsulinDosePage {
     private JButton backButton;
     private JButton calculateButton;
     private JTextField textField1;
-    private JTextArea textArea1;
+    private JTextField textField2;
+    private JButton seeDetailsButton;
 
     public BackgroundInsulinDosePage() {
         backButton.addActionListener(new ActionListener() {
@@ -32,7 +33,7 @@ public class BackgroundInsulinDosePage {
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String i1 = textArea1.getText();
+                String i1 = textField2.getText();
                 try {
                     int weight = Integer.parseInt(i1);
                     if (weight>=40 && weight<=130) {
