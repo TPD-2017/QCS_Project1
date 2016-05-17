@@ -11,7 +11,7 @@ public class Client {
     public static void main(String[] args){
         Voter voter = new Voter();
         //voter.calculateInsulinDose(79);
-        voter.mealtimeInsulinDose(60,12,200,100,25);
+        //voter.mealtimeInsulinDose(60,12,200,100,25);
         try {
             sleep(4000);
         } catch (InterruptedException e) {

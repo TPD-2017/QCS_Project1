@@ -66,21 +66,25 @@ public class Voter {
             x.start();
         }
         limitTime = System.currentTimeMillis()+4*1000;
-        while(System.currentTimeMillis() < limitTime || done==3){
-            for(Thread x : threadList){
+        while(System.currentTimeMillis() < limitTime || done<3){
+            ListIterator<Thread> iterator = threadList.listIterator();
+            while(iterator.hasNext()){
+                Thread x = iterator.next();
                 if(x.getState()==Thread.State.TERMINATED){
-                    threadList.remove(x);
-                    if(results.containsKey(-1)){
-                        if(results.get(-1)>1){
-                            results.put(-1, (results.get(-1))-1);
+                    iterator.remove();
+                    synchronized (results) {
+                        if (results.containsKey(-1)) {
+                            if (results.get(-1) > 1) {
+                                results.put(-1, (results.get(-1)) - 1);
+                            } else {
+                                results.remove(-1);
+                            }
+                            Thread n = new Thread(() -> webservices.get(random.nextInt(webservices.size())).calculateInsulinDose(bodyWeight));
+                            n.start();
+                            iterator.add(n);
                         } else {
-                            results.remove(-1);
+                            done++;
                         }
-                        Thread n = new Thread(()-> webservices.get(random.nextInt(webservices.size())).calculateInsulinDose(bodyWeight));
-                        n.start();
-                        threadList.add(n);
-                    } else {
-                        done++;
                     }
                 }
             }
@@ -90,6 +94,8 @@ public class Voter {
                 x.interrupt();
             }
         }
+        majority();
+        System.out.println("Shit's terminated yo");
     }
 
     public void mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity){
