@@ -18,7 +18,7 @@ public class Client {
             e.printStackTrace();
         }
 
-        voter.majority();
+        voter.calculateInsulinDose(79);
         System.out.println(voter.technicalDetail());
         /*ArrayList<Integer> lista1 = new ArrayList<>();
         ArrayList<Integer> lista2 = new ArrayList<>();

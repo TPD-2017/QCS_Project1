@@ -42,10 +42,25 @@ public class PersonalSensivityToInsulinPage {
                 String i3 = textField4.getText();
                 try {
                     int physicalActivityLevel = Integer.parseInt(i1);
-                    int kSamplesOfPhysicalActivity = Integer.parseInt(i2);
-                    int kSamplesDropsInBloodSugar = Integer.parseInt(i3);
-                    if(physicalActivityLevel>=0 && physicalActivityLevel<=10 && kSamplesOfPhysicalActivity>=0
-                            && kSamplesOfPhysicalActivity<=10 && kSamplesDropsInBloodSugar>=15 && kSamplesDropsInBloodSugar<=100)
+                    String[] kspa = i2.trim().split("\\s*,\\s*");
+                    int[] kSamplesOfPhysicalActivity = new int[kspa.length];
+                    System.out.println(kspa.length);
+                    for (int i=0; i<kspa.length; i++)
+                    {
+                        kSamplesOfPhysicalActivity[i] = Integer.parseInt(kspa[i]);
+                    }
+                    String[] ksdbs = i3.trim().split("\\s*,\\s*");
+                    int[] kSamplesDropsInBloodSugar = new int[ksdbs.length];
+                    System.out.println(ksdbs.length);
+                    for (int i=0; i<ksdbs.length; i++)
+                    {
+                        kSamplesDropsInBloodSugar[i] = Integer.parseInt(kspa[i]);
+                    }
+                    //int kSamplesOfPhysicalActivity = Integer.parseInt(i2);
+                    //int kSamplesDropsInBloodSugar = Integer.parseInt(i3);
+
+                    if(physicalActivityLevel>=0 && physicalActivityLevel<=10 && kspa.length>=0
+                            && kspa.length<=10 && kSamplesDropsInBloodSugar[0]>=15 && kSamplesDropsInBloodSugar[0]<=100)
                     {
                         // FAZER AQUI CHAMADA A FUNCAO!
                         voter = new Voter();
