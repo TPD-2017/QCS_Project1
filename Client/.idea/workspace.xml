@@ -26,8 +26,13 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="209">
+              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+=======
             <state relative-caret-position="360">
               <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+>>>>>>> 0061a67538c1c7b96d8bfc34af91f49cb2be31ea
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,8 +43,13 @@
       <file leaf-file-name="Voter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/Voter.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="382">
+              <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+=======
             <state relative-caret-position="126">
               <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+>>>>>>> 0061a67538c1c7b96d8bfc34af91f49cb2be31ea
               <folding>
                 <element signature="e#1915#1916#0" expanded="true" />
                 <element signature="e#1947#1948#0" expanded="true" />
@@ -116,9 +126,15 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+=======
       <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+>>>>>>> 0061a67538c1c7b96d8bfc34af91f49cb2be31ea
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -615,6 +631,42 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TaskManager">
+<<<<<<< HEAD
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="46ff6243-e0d4-41e6-b660-035ef8e8f8cc" name="Default" comment="" />
+      <created>1462127771168</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1462127771168</updated>
+      <workItem from="1462127780276" duration="5595000" />
+      <workItem from="1462146941958" duration="1667000" />
+      <workItem from="1462197619891" duration="1604000" />
+      <workItem from="1462292797007" duration="5006000" />
+      <workItem from="1462378578000" duration="2152000" />
+      <workItem from="1462384021193" duration="3150000" />
+      <workItem from="1462400076101" duration="1841000" />
+      <workItem from="1462409370599" duration="523000" />
+      <workItem from="1462812549289" duration="6466000" />
+      <workItem from="1462909894052" duration="1032000" />
+      <workItem from="1462973957890" duration="904000" />
+      <workItem from="1463160058087" duration="916000" />
+      <workItem from="1463168795448" duration="289000" />
+      <workItem from="1463275282537" duration="69000" />
+      <workItem from="1463405324538" duration="6891000" />
+      <workItem from="1463416921390" duration="144000" />
+      <workItem from="1463507371450" duration="23000" />
+      <workItem from="1463507451508" duration="3181000" />
+      <workItem from="1463511398569" duration="92000" />
+      <workItem from="1463522354118" duration="430000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="41975000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+=======
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -622,6 +674,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1335" y="24" width="1335" height="1026" extended-state="6" />
+>>>>>>> 0061a67538c1c7b96d8bfc34af91f49cb2be31ea
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -637,7 +690,11 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17473525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17453183" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 0061a67538c1c7b96d8bfc34af91f49cb2be31ea
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1199,6 +1256,15 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/client/WebServiceHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="82" column="69" selection-start-line="82" selection-start-column="69" selection-end-line="82" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+=======
     <entry file="file://$PROJECT_DIR$/Client.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1212,13 +1278,19 @@
         <state relative-caret-position="144">
           <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
           <folding />
+>>>>>>> 0061a67538c1c7b96d8bfc34af91f49cb2be31ea
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/WebServiceHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="209">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+=======
         <state relative-caret-position="338">
           <caret line="38" column="65" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
+>>>>>>> 0061a67538c1c7b96d8bfc34af91f49cb2be31ea
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1227,6 +1299,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/Voter.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="382">
+          <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+=======
         <state relative-caret-position="126">
           <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
           <folding>
@@ -1248,6 +1324,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+>>>>>>> 0061a67538c1c7b96d8bfc34af91f49cb2be31ea
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

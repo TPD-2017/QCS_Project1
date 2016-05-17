@@ -112,7 +112,7 @@ public class Voter {
         }
     }
 
-    public void majority(){
+    public String majority(){
         System.out.println("Doing the majority");
         int max = -1;
         int mostFrequent = -1;
@@ -129,6 +129,11 @@ public class Voter {
         this.mostfreqent = mostFrequent;
         this.technical_details += "\n\nResult of the majority: "+mostFrequent+"\n";
         System.out.println("Resultado do votador: " + mostFrequent);
+        if(mostFrequent == -1){
+            return "Error";
+        }else{
+            return ""+mostFrequent;
+        }
     }
 
     public int getMostfreqent() {
