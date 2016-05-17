@@ -60,15 +60,19 @@ public class WebServiceHandler{
             int singleresult = proxy.mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity);
             System.out.println("Single result: " + singleresult);
             this.getVoter().setTechnical_details(singleresult + " ");
-            Integer freq = this.getVoter().getResults().get(singleresult);
-            this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+            synchronized (this.getVoter().getResults()) {
+                Integer freq = this.getVoter().getResults().get(singleresult);
+                this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Calculating Insulin Dose broke.");
+            System.out.println("Calculating Mealtime Insulin Dose broke.");
             int singleresult = -1;
             this.getVoter().setTechnical_details(singleresult + " ");
-            Integer freq = this.getVoter().getResults().get(singleresult);
-            this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+            synchronized (this.getVoter().getResults()) {
+                Integer freq = this.getVoter().getResults().get(singleresult);
+                this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+            }
         }
     }
 
@@ -78,15 +82,19 @@ public class WebServiceHandler{
             int singleresult = proxy.personalSensitivityToInsulin(physicalActivityLevel, physicalActivitySamples, bloodSugarDropSamples);
             System.out.println("Single result: " + singleresult);
             this.getVoter().setTechnical_details(singleresult + " ");
-            Integer freq = this.getVoter().getResults().get(singleresult);
-            this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+            synchronized (this.getVoter().getResults()) {
+                Integer freq = this.getVoter().getResults().get(singleresult);
+                this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Calculating Insulin Dose broke.");
+            System.out.println("Calculating Personal Sensitivity broke.");
             int singleresult = -1;
             this.getVoter().setTechnical_details(singleresult + " ");
-            Integer freq = this.getVoter().getResults().get(singleresult);
-            this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+            synchronized (this.getVoter().getResults()) {
+                Integer freq = this.getVoter().getResults().get(singleresult);
+                this.getVoter().getResults().put(singleresult, (freq == null) ? 1 : freq + 1);
+            }
         }
     }
 

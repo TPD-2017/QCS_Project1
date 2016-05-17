@@ -5,7 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Client/client/Client.class" afterPath="$PROJECT_DIR$/out/production/Client/client/Client.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Client/client/Voter.class" afterPath="$PROJECT_DIR$/out/production/Client/client/Voter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/Voter.java" afterPath="$PROJECT_DIR$/src/client/Voter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/WebServiceHandler.java" afterPath="$PROJECT_DIR$/src/client/WebServiceHandler.java" />
     </list>
     <ignored path="Client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Voter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Voter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/Voter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="428">
@@ -50,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebServiceHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WebServiceHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/WebServiceHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+            <state relative-caret-position="486">
+              <caret line="84" column="57" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,9 +76,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/client/WebServiceHandler.java" />
         <option value="$PROJECT_DIR$/src/client/Client.java" />
         <option value="$PROJECT_DIR$/src/client/Voter.java" />
+        <option value="$PROJECT_DIR$/src/client/WebServiceHandler.java" />
       </list>
     </option>
   </component>
@@ -769,7 +769,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1463521711468</updated>
-      <workItem from="1463521733385" duration="4187000" />
+      <workItem from="1463521733385" duration="4320000" />
     </task>
     <task id="LOCAL-00001" summary="Loop?">
       <created>1463524194633</created>
@@ -785,11 +785,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463524213580</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Adding threading to stuff">
+      <created>1463525955234</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1463525955234</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4858000" />
+    <option name="totallyTimeSpent" value="4991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1335" height="1026" extended-state="6" />
@@ -828,7 +835,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Loop?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Loop?" />
+    <MESSAGE value="Adding threading to stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding threading to stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1259,21 +1267,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/WebServiceHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/Voter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
           <caret line="159" column="9" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/WebServiceHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="84" column="57" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
