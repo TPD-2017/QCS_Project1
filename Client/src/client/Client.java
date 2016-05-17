@@ -19,6 +19,7 @@ public class Client {
         }
 
         voter.majority();
+        System.out.println(voter.technicalDetail());
         /*ArrayList<Integer> lista1 = new ArrayList<>();
         ArrayList<Integer> lista2 = new ArrayList<>();
         lista1.add(1);
