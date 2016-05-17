@@ -1,3 +1,5 @@
+import client.Voter;
+
 import javax.swing.*;
 
 /**
@@ -7,7 +9,8 @@ public class Details {
     private JTextArea textArea1;
     public JPanel DetailsView;
 
-    public Details(){
-
+    public Details(Voter voter){
+        System.out.print(voter.technicalDetail());
+        textArea1.setText(voter.technicalDetail());
     }
 }

@@ -20,6 +20,8 @@ public class MealtimeInsulinDosePage {
     private JTextField textField6;
     private JButton seeDetailsButton;
 
+    Voter voter;
+
     public MealtimeInsulinDosePage() {
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -51,7 +53,7 @@ public class MealtimeInsulinDosePage {
                             && carbohydratesProcessedBy1UnitOfInsulin<=15 && actualBloodSugarLevel>=50 && actualBloodSugarLevel<=250
                             && targetBloodSugarLevel>=80 && targetBloodSugarLevel<=120 && individualSensivity>=15 && individualSensivity<=100) {
                         // FAZER AQUI CHAMADA A FUNCAO
-                        Voter voter = new Voter();
+                        voter = new Voter();
                         voter.mealtimeInsulinDose(carbohydratesInTheMeal, carbohydratesProcessedBy1UnitOfInsulin, actualBloodSugarLevel, targetBloodSugarLevel, individualSensivity);
                         try {
                             sleep(4000);
@@ -74,7 +76,7 @@ public class MealtimeInsulinDosePage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame detailsFrame = new JFrame("Mealtime Insulin Calculator Details");
-                detailsFrame.setContentPane(new Details().DetailsView);
+                detailsFrame.setContentPane(new Details(voter).DetailsView);
                 //detailsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 detailsFrame.setResizable(false);
                 detailsFrame.pack();
