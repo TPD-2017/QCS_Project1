@@ -47,7 +47,7 @@ public class Voter {
     }
 
     public void calculateInsulinDose(int bodyWeight){
-        technical_details="Number of webservers: 3\n Results: ";
+        technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -57,7 +57,7 @@ public class Voter {
     }
 
     public void mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity){
-        technical_details="Number of webservers: 3\n Results: ";
+        technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -67,7 +67,7 @@ public class Voter {
     }
 
     public void personalSensitivityToInsulin(int physicalActivityLevel, ArrayList<Integer> physicalActivitySamples, ArrayList<Integer> bloodSugarDropSamples){
-        technical_details="Number of webservers: 3\n Results: ";
+        technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -91,7 +91,7 @@ public class Voter {
             }
         }
         mostfreqent = mostFrequent;
-        technical_details += "\n Result of the majotiry: "+mostFrequent+"\n";
+        technical_details += "\n\nResult of the majority: "+mostFrequent+"\n";
         System.out.println("Resultado do votador: " + mostFrequent);
     }
 
