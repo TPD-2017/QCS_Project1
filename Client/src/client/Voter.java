@@ -72,7 +72,7 @@ public class Voter {
                     threadList.remove(x);
                     if(results.containsKey(-1)){
                         if(results.get(-1)>1){
-                            results.put(-1, results.get(-1)-1);
+                            results.put(-1, (results.get(-1))-1);
                         } else {
                             results.remove(-1);
                         }
