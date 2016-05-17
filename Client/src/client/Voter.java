@@ -1,13 +1,10 @@
 package client;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
- * Integração de Sistemas
- * Pedro Filipe Dinis Stamm de Matos, 2009116927
+ * Qualidade e Confiabilidade de Software
+ * Daniel Bastos, Pedro Stamm e Tiago Andrade
  */
 public class Voter {
 
@@ -15,6 +12,8 @@ public class Voter {
 
     private Map<Integer, Integer> results;
     private List<WebServiceHandler> webservices;
+
+    Random random = new Random();
 
     private int mostfreqent = -1;
 
@@ -47,12 +46,49 @@ public class Voter {
     }
 
     public void calculateInsulinDose(int bodyWeight){
+        int done=0;
+        long limitTime;
+        List<WebServiceHandler> webservicesList = new ArrayList<>();
+        List<Thread> threadList = new ArrayList<>();
+
+        webservicesList.add(webservices.get(0));
+        webservicesList.add(webservices.get(1));
+        webservicesList.add(webservices.get(2));
+
         technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
-        for(WebServiceHandler x: webservices){
-            new Thread(()-> x.calculateInsulinDose(bodyWeight)).start();
+        for(WebServiceHandler x: webservicesList){
+            threadList.add(new Thread(()-> x.calculateInsulinDose(bodyWeight)));
+        }
+        for(Thread x: threadList){
+            x.start();
+        }
+        limitTime = System.currentTimeMillis()+4*1000;
+        while(System.currentTimeMillis() < limitTime || done==3){
+            for(Thread x : threadList){
+                if(x.getState()==Thread.State.TERMINATED){
+                    threadList.remove(x);
+                    if(results.containsKey(-1)){
+                        if(results.get(-1)>1){
+                            results.put(-1, (results.get(-1))-1);
+                        } else {
+                            results.remove(-1);
+                        }
+                        Thread n = new Thread(()-> webservices.get(random.nextInt(webservices.size())).calculateInsulinDose(bodyWeight));
+                        n.start();
+                        threadList.add(n);
+                    } else {
+                        done++;
+                    }
+                }
+            }
+        }
+        for(Thread x : threadList){
+            if(x.getState() != Thread.State.TERMINATED){
+                x.interrupt();
+            }
         }
     }
 
@@ -90,8 +126,8 @@ public class Voter {
                 max = x.getValue();
             }
         }
-        mostfreqent = mostFrequent;
-        technical_details += "\n\nResult of the majority: "+mostFrequent+"\n";
+        this.mostfreqent = mostFrequent;
+        this.technical_details += "\n\nResult of the majority: "+mostFrequent+"\n";
         System.out.println("Resultado do votador: " + mostFrequent);
     }
 
