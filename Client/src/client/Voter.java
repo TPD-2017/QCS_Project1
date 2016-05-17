@@ -16,15 +16,7 @@ public class Voter {
     private Map<Integer, Integer> results;
     private List<WebServiceHandler> webservices;
 
-    public int getMostfreqent() {
-        return mostfreqent;
-    }
-
     private int mostfreqent = -1;
-
-    public void setTechnical_details(String technical_details) {
-        this.technical_details += technical_details;
-    }
 
     private String technical_details="";
 
@@ -101,6 +93,14 @@ public class Voter {
         mostfreqent = mostFrequent;
         technical_details += "\n Result of the majotiry: "+mostFrequent+"\n";
         System.out.println("Resultado do votador: " + mostFrequent);
+    }
+
+    public int getMostfreqent() {
+        return mostfreqent;
+    }
+
+    public void setTechnical_details(String technical_details) {
+        this.technical_details += technical_details;
     }
 
     public String technicalDetail(){
