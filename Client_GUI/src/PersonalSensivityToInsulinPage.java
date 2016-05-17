@@ -59,14 +59,8 @@ public class PersonalSensivityToInsulinPage {
                     {
                         // FAZER AQUI CHAMADA A FUNCAO!
                         voter = new Voter();
-                        //int result = voter.personalSensitivityToInsulin(physicalActivityLevel,kSamplesOfPhysicalActivity, kSamplesDropsInBloodSugar);
-                        try {
-                            sleep(4000);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
-                        //String result =voter.majority();
-                        //textField1.setText(result+"");
+                        int result = voter.personalSensitivityToInsulin(physicalActivityLevel,kSamplesOfPhysicalActivity, kSamplesDropsInBloodSugar);
+                        textField1.setText(result+"");
                         seeDetailsButton.setEnabled(true);
                     } else {
                         textField1.setText("Invalid Input");
@@ -84,6 +78,7 @@ public class PersonalSensivityToInsulinPage {
                 detailsFrame.setContentPane(new Details(voter).DetailsView);
                 detailsFrame.setResizable(false);
                 detailsFrame.pack();
+                detailsFrame.setLocationRelativeTo(null);
                 detailsFrame.setVisible(true);
             }
         });

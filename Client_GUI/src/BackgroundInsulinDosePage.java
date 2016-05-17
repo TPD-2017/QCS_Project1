@@ -41,12 +41,6 @@ public class BackgroundInsulinDosePage {
                         // FAZER AQUI CHAMADA A FUNCAO!
                         voter = new Voter();
                         int result = voter.calculateInsulinDose(weight);
-                        /*try {
-                            sleep(4000);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }*/
-                        //String result = voter.majority();
                         textField1.setText(result+"");
                         seeDetailsButton.setEnabled(true);
                     } else {
@@ -65,6 +59,7 @@ public class BackgroundInsulinDosePage {
                 detailsFrame.setContentPane(new Details(voter).DetailsView);
                 detailsFrame.setResizable(false);
                 detailsFrame.pack();
+                detailsFrame.setLocationRelativeTo(null);
                 detailsFrame.setVisible(true);
             }
         });
