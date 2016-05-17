@@ -141,7 +141,7 @@ public class Voter {
                             } else {
                                 results.remove(-1);
                             }
-                            Thread n = new Thread(() -> mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity));
+                            Thread n = new Thread(() -> webservices.get(random.nextInt(webservices.size())).mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity));
                             n.start();
                             iterator.add(n);
                         } else {
@@ -162,18 +162,62 @@ public class Voter {
 
     }
 
-    public void personalSensitivityToInsulin(int physicalActivityLevel, ArrayList<Integer> physicalActivitySamples, ArrayList<Integer> bloodSugarDropSamples){
+    public int personalSensitivityToInsulin(int physicalActivityLevel, ArrayList<Integer> physicalActivitySamples, ArrayList<Integer> bloodSugarDropSamples){
+        int done=0;
+        long limitTime;
+        List<WebServiceHandler> webservicesList = new ArrayList<>();
+        List<Thread> threadList = new ArrayList<>();
         technical_details = new HashMap<>();
         technical_details.put("error", 0);
         technical_details.put("timeout", 0);
         technical_details.put("webservices", 0);
         technical_details.put("majority", 0);
+
+        webservicesList.add(webservices.get(0));
+        webservicesList.add(webservices.get(1));
+        webservicesList.add(webservices.get(2));
+
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
-        for(WebServiceHandler x: webservices){
-            new Thread(()->x.personalSensitivityToInsulin(physicalActivityLevel, physicalActivitySamples, bloodSugarDropSamples)).start();
+        for(WebServiceHandler x: webservicesList){
+            threadList.add(new Thread(()->x.personalSensitivityToInsulin(physicalActivityLevel, physicalActivitySamples, bloodSugarDropSamples)));
         }
+        for(Thread x: threadList){
+            x.start();
+        }
+        limitTime = System.currentTimeMillis()+4*1000;
+        while(System.currentTimeMillis() < limitTime || done<3){
+            ListIterator<Thread> iterator = threadList.listIterator();
+            while(iterator.hasNext()){
+                Thread x = iterator.next();
+                if(x.getState()==Thread.State.TERMINATED){
+                    iterator.remove();
+                    synchronized (results) {
+                        if (results.containsKey(-1)) {
+                            if (results.get(-1) > 1) {
+                                results.put(-1, (results.get(-1)) - 1);
+                            } else {
+                                results.remove(-1);
+                            }
+                            Thread n = new Thread(()->webservices.get(random.nextInt(webservices.size())).personalSensitivityToInsulin(physicalActivityLevel, physicalActivitySamples, bloodSugarDropSamples));
+                            n.start();
+                            iterator.add(n);
+                        } else {
+                            done++;
+                        }
+                    }
+                }
+            }
+        }
+        for(Thread x : threadList){
+            if(x.getState() != Thread.State.TERMINATED){
+                System.out.println("Had to interrupt");
+                x.interrupt();
+                results.put(-1, (results.get(-1) == null) ? 1 : results.get(-1) + 1);
+            }
+        }
+        return majority();
     }
 
     public int majority(){
