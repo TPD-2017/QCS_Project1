@@ -14,7 +14,9 @@ public class BackgroundInsulinDosePage {
     private JButton backButton;
     private JButton calculateButton;
     private JTextField textField1;
-    private JTextArea textArea1;
+    private JTextField textField2;
+    private JButton seeDetailsButton;
+    Voter voter;
 
     public BackgroundInsulinDosePage() {
         backButton.addActionListener(new ActionListener() {
@@ -32,12 +34,12 @@ public class BackgroundInsulinDosePage {
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String i1 = textArea1.getText();
+                String i1 = textField2.getText();
                 try {
                     int weight = Integer.parseInt(i1);
                     if (weight>=40 && weight<=130) {
                         // FAZER AQUI CHAMADA A FUNCAO!
-                        Voter voter = new Voter();
+                        voter = new Voter();
                         voter.calculateInsulinDose(weight);
                         try {
                             sleep(4000);
@@ -53,6 +55,17 @@ public class BackgroundInsulinDosePage {
                 } catch (NumberFormatException n) {
                     textField1.setText("Invalid Input");
                 }
+            }
+        });
+
+        seeDetailsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame detailsFrame = new JFrame("Details");
+                detailsFrame.setContentPane(new Details(voter).DetailsView);
+                detailsFrame.setResizable(false);
+                detailsFrame.pack();
+                detailsFrame.setVisible(true);
             }
         });
     }

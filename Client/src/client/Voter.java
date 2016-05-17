@@ -15,15 +15,7 @@ public class Voter {
 
     Random random = new Random();
 
-    public int getMostfreqent() {
-        return mostfreqent;
-    }
-
     private int mostfreqent = -1;
-
-    public void setTechnical_details(String technical_details) {
-        this.technical_details += technical_details;
-    }
 
     private String technical_details="";
 
@@ -63,7 +55,7 @@ public class Voter {
         webservicesList.add(webservices.get(1));
         webservicesList.add(webservices.get(2));
 
-        technical_details="Number of webservers: 3\n Results: ";
+        technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -101,7 +93,7 @@ public class Voter {
     }
 
     public void mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity){
-        technical_details="Number of webservers: 3\n Results: ";
+        technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -111,7 +103,7 @@ public class Voter {
     }
 
     public void personalSensitivityToInsulin(int physicalActivityLevel, ArrayList<Integer> physicalActivitySamples, ArrayList<Integer> bloodSugarDropSamples){
-        technical_details="Number of webservers: 3\n Results: ";
+        technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -135,8 +127,16 @@ public class Voter {
             }
         }
         this.mostfreqent = mostFrequent;
-        this.technical_details += "\n Result of the majotiry: "+mostFrequent+"\n";
+        this.technical_details += "\n\nResult of the majority: "+mostFrequent+"\n";
         System.out.println("Resultado do votador: " + mostFrequent);
+    }
+
+    public int getMostfreqent() {
+        return mostfreqent;
+    }
+
+    public void setTechnical_details(String technical_details) {
+        this.technical_details += technical_details;
     }
 
     public String technicalDetail(){

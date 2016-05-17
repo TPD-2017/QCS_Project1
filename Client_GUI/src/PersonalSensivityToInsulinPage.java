@@ -13,11 +13,13 @@ import static java.lang.Thread.sleep;
 public class PersonalSensivityToInsulinPage {
     private JPanel PersonalSensivityToInsulinView;
     private JButton backButton;
-    private JTextArea textArea1;
-    private JTextArea textArea2;
-    private JTextArea textArea3;
     private JButton calculateButton;
     private JTextField textField1;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JButton seeDetailsButton;
+    Voter voter;
 
     public PersonalSensivityToInsulinPage() {
         backButton.addActionListener(new ActionListener() {
@@ -35,9 +37,9 @@ public class PersonalSensivityToInsulinPage {
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String i1 = textArea1.getText();
-                String i2 = textArea2.getText();
-                String i3 = textArea3.getText();
+                String i1 = textField2.getText();
+                String i2 = textField3.getText();
+                String i3 = textField4.getText();
                 try {
                     int physicalActivityLevel = Integer.parseInt(i1);
                     int kSamplesOfPhysicalActivity = Integer.parseInt(i2);
@@ -46,9 +48,7 @@ public class PersonalSensivityToInsulinPage {
                             && kSamplesOfPhysicalActivity<=10 && kSamplesDropsInBloodSugar>=15 && kSamplesDropsInBloodSugar<=100)
                     {
                         // FAZER AQUI CHAMADA A FUNCAO!
-                        Voter voter = new Voter();
-
-                        //voter.
+                        voter = new Voter();
                         try {
                             sleep(4000);
                         } catch (InterruptedException e1) {
@@ -63,6 +63,17 @@ public class PersonalSensivityToInsulinPage {
                 } catch (NumberFormatException n){
                     textField1.setText("Invalid Input");
                 }
+            }
+        });
+
+        seeDetailsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame detailsFrame = new JFrame("Details");
+                detailsFrame.setContentPane(new Details(voter).DetailsView);
+                detailsFrame.setResizable(false);
+                detailsFrame.pack();
+                detailsFrame.setVisible(true);
             }
         });
     }
