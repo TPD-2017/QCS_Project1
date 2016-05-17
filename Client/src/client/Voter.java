@@ -52,7 +52,7 @@ public class Voter {
         technical_details = new HashMap<>();
         technical_details.put("error", 0);
         technical_details.put("timeout", 0);
-        technical_details.put("webservices", 0);
+        technical_details.put("webservices", 3);
         technical_details.put("majority", 0);
 
         webservicesList.add(webservices.get(0));
@@ -82,6 +82,8 @@ public class Voter {
                             } else {
                                 results.remove(-1);
                             }
+                            Integer valor = technical_details.get("webservices");
+                            technical_details.put("webservices", (valor==null)?1:valor+1);
                             Thread n = new Thread(() -> webservices.get(random.nextInt(webservices.size())).calculateInsulinDose(bodyWeight));
                             n.start();
                             iterator.add(n);
@@ -111,7 +113,7 @@ public class Voter {
         technical_details = new HashMap<>();
         technical_details.put("error", 0);
         technical_details.put("timeout", 0);
-        technical_details.put("webservices", 0);
+        technical_details.put("webservices", 3);
         technical_details.put("majority", 0);
 
         webservicesList.add(webservices.get(0));
@@ -141,6 +143,8 @@ public class Voter {
                             } else {
                                 results.remove(-1);
                             }
+                            Integer valor = technical_details.get("webservices");
+                            technical_details.put("webservices", (valor==null)?1:valor+1);
                             Thread n = new Thread(() -> webservices.get(random.nextInt(webservices.size())).mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity));
                             n.start();
                             iterator.add(n);
@@ -170,7 +174,7 @@ public class Voter {
         technical_details = new HashMap<>();
         technical_details.put("error", 0);
         technical_details.put("timeout", 0);
-        technical_details.put("webservices", 0);
+        technical_details.put("webservices", 3);
         technical_details.put("majority", 0);
 
         webservicesList.add(webservices.get(0));
@@ -200,6 +204,8 @@ public class Voter {
                             } else {
                                 results.remove(-1);
                             }
+                            Integer valor = technical_details.get("webservices");
+                            technical_details.put("webservices", (valor==null)?1:valor+1);
                             Thread n = new Thread(()->webservices.get(random.nextInt(webservices.size())).personalSensitivityToInsulin(physicalActivityLevel, physicalActivitySamples, bloodSugarDropSamples));
                             n.start();
                             iterator.add(n);
@@ -258,7 +264,7 @@ public class Voter {
     public String technicalDetail(){
         String text = "";
         for(Map.Entry<String, Integer> x: technical_details.entrySet()){
-            text += x.getKey() +": "+x.getValue()+"\n\n";
+            text += x.getKey() +": "+x.getValue()+"\n";
         }
         return text;
     }
