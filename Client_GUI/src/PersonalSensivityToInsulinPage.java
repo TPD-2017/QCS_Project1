@@ -54,10 +54,8 @@ public class PersonalSensivityToInsulinPage {
                     for (String ksdb : ksdbs) {
                         kSamplesDropsInBloodSugar.add(Integer.parseInt(ksdb));
                     }
-                    //int kSamplesOfPhysicalActivity = Integer.parseInt(i2);
-                    //int kSamplesDropsInBloodSugar = Integer.parseInt(i3);
 
-                    if(physicalActivityLevel>=0 && physicalActivityLevel<=10 && kspa.length==ksdbs.length)
+                    if(physicalActivityLevel>=0 && physicalActivityLevel<=10 && kspa.length==ksdbs.length && kspa.length>1)
                     {
                         // FAZER AQUI CHAMADA A FUNCAO!
                         voter = new Voter();
@@ -67,9 +65,9 @@ public class PersonalSensivityToInsulinPage {
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
                         }
-                        voter.majority();
-                        int result = voter.getMostfreqent();
+                        String result =voter.majority();
                         textField1.setText(result+"");
+                        seeDetailsButton.setEnabled(true);
                     } else {
                         textField1.setText("Invalid Input");
                     }

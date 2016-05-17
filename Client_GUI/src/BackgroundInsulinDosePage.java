@@ -46,9 +46,9 @@ public class BackgroundInsulinDosePage {
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
                         }
-                        voter.majority();
-                        int result = voter.getMostfreqent();
+                        String result = voter.majority();
                         textField1.setText(result+"");
+                        seeDetailsButton.setEnabled(true);
                     } else {
                         textField1.setText("Invalid Input");
                     }
