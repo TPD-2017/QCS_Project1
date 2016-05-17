@@ -45,7 +45,7 @@ public class Voter {
         return results;
     }
 
-    public void calculateInsulinDose(int bodyWeight){
+    public int calculateInsulinDose(int bodyWeight){
         int done=0;
         long limitTime;
         List<WebServiceHandler> webservicesList = new ArrayList<>();
@@ -91,21 +91,67 @@ public class Voter {
         }
         for(Thread x : threadList){
             if(x.getState() != Thread.State.TERMINATED){
+                System.out.println("Had to interrupt");
                 x.interrupt();
+                results.put(-1, (results.get(-1) == null) ? 1 : results.get(-1) + 1);
             }
         }
-        majority();
-        System.out.println("Shit's terminated yo");
+        return majority();
     }
 
-    public void mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity){
+    public int mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity){
+        int done=0;
+        long limitTime;
+        List<WebServiceHandler> webservicesList = new ArrayList<>();
+        List<Thread> threadList = new ArrayList<>();
+
+        webservicesList.add(webservices.get(0));
+        webservicesList.add(webservices.get(1));
+        webservicesList.add(webservices.get(2));
+
         technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
-        for(WebServiceHandler x: webservices){
-            new Thread(() -> x.mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity)).start();
+        for(WebServiceHandler x: webservicesList){
+            threadList.add(new Thread(() -> x.mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity)));
         }
+        for(Thread x: threadList){
+            x.start();
+        }
+        limitTime = System.currentTimeMillis()+4*1000;
+        while(System.currentTimeMillis() < limitTime || done<3){
+            ListIterator<Thread> iterator = threadList.listIterator();
+            while(iterator.hasNext()){
+                Thread x = iterator.next();
+                if(x.getState()==Thread.State.TERMINATED){
+                    iterator.remove();
+                    synchronized (results) {
+                        if (results.containsKey(-1)) {
+                            if (results.get(-1) > 1) {
+                                results.put(-1, (results.get(-1)) - 1);
+                            } else {
+                                results.remove(-1);
+                            }
+                            Thread n = new Thread(() -> mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity));
+                            n.start();
+                            iterator.add(n);
+                        } else {
+                            done++;
+                        }
+                    }
+                }
+            }
+        }
+        for(Thread x : threadList){
+            if(x.getState() != Thread.State.TERMINATED){
+                System.out.println("Had to interrupt");
+                x.interrupt();
+                results.put(-1, (results.get(-1) == null) ? 1 : results.get(-1) + 1);
+            }
+        }
+        return majority();
+
     }
 
     public void personalSensitivityToInsulin(int physicalActivityLevel, ArrayList<Integer> physicalActivitySamples, ArrayList<Integer> bloodSugarDropSamples){
@@ -118,7 +164,7 @@ public class Voter {
         }
     }
 
-    public String majority(){
+    public int majority(){
         System.out.println("Doing the majority");
         int max = -1;
         int mostFrequent = -1;
@@ -136,9 +182,9 @@ public class Voter {
         this.technical_details += "\n\nResult of the majority: "+mostFrequent+"\n";
         System.out.println("Resultado do votador: " + mostFrequent);
         if(mostFrequent == -1){
-            return "Error";
+            return -1;
         }else{
-            return ""+mostFrequent;
+            return mostFrequent;
         }
     }
 
