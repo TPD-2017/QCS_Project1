@@ -11,17 +11,16 @@ public class Voter {
     private int precision = 3;
 
     private Map<Integer, Integer> results;
+    private Map<String, Integer> technical_details;
     private List<WebServiceHandler> webservices;
 
     Random random = new Random();
 
     private int mostfreqent = -1;
 
-    private String technical_details="";
 
     public Voter(){
         results = new HashMap<>();
-
         webservices = new ArrayList<>();
 
         webservices.add(new WebServiceHandler("http://qcsproject1-qcsproject.rhcloud.com/InsulinDoseCalculator/?wsdl","InsulinDoseCalculator", "InsulinDoseCalculatorPort", "http://server/", this));
@@ -50,12 +49,16 @@ public class Voter {
         long limitTime;
         List<WebServiceHandler> webservicesList = new ArrayList<>();
         List<Thread> threadList = new ArrayList<>();
+        technical_details = new HashMap<>();
+        technical_details.put("error", 0);
+        technical_details.put("timeout", 0);
+        technical_details.put("webservices", 0);
+        technical_details.put("majority", 0);
 
         webservicesList.add(webservices.get(0));
         webservicesList.add(webservices.get(1));
         webservicesList.add(webservices.get(2));
 
-        technical_details="Number of webservers: 3\n\nResults: ";
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -99,7 +102,11 @@ public class Voter {
     }
 
     public void mealtimeInsulinDose(int carbohydrateAmount, int carbohydrateToInsulinRatio, int preMealBloodSugar, int targetBloodSugar, int personalSensitivity){
-        technical_details="Number of webservers: 3\n\nResults: ";
+        technical_details = new HashMap<>();
+        technical_details.put("error", 0);
+        technical_details.put("timeout", 0);
+        technical_details.put("webservices", 0);
+        technical_details.put("majority", 0);
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -109,7 +116,11 @@ public class Voter {
     }
 
     public void personalSensitivityToInsulin(int physicalActivityLevel, ArrayList<Integer> physicalActivitySamples, ArrayList<Integer> bloodSugarDropSamples){
-        technical_details="Number of webservers: 3\n\nResults: ";
+        technical_details = new HashMap<>();
+        technical_details.put("error", 0);
+        technical_details.put("timeout", 0);
+        technical_details.put("webservices", 0);
+        technical_details.put("majority", 0);
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
         //new Thread(webservice::calculateInsulinDose).start();
@@ -133,7 +144,7 @@ public class Voter {
             }
         }
         this.mostfreqent = mostFrequent;
-        this.technical_details += "\n\nResult of the majority: "+mostFrequent+"\n";
+        this.technical_details.put("majority", mostFrequent);
         System.out.println("Resultado do votador: " + mostFrequent);
         if(mostFrequent == -1){
             return "Error";
@@ -147,11 +158,18 @@ public class Voter {
     }
 
     public void setTechnical_details(String technical_details) {
-        this.technical_details += technical_details;
+        if(technical_details.equals("-1"))
+            technical_details = "error";
+        Integer valor = this.technical_details.get(technical_details);
+        this.technical_details.put(technical_details, (valor == null) ? 1 : valor + 1);
     }
 
     public String technicalDetail(){
-        return technical_details;
+        String text = "";
+        for(Map.Entry<String, Integer> x: technical_details.entrySet()){
+            text += x.getKey() +": "+x.getValue()+"\n\n";
+        }
+        return text;
     }
 
 }
