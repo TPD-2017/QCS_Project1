@@ -19,6 +19,7 @@ public class PersonalSensivityToInsulinPage {
     private JTextField textField3;
     private JTextField textField4;
     private JButton seeDetailsButton;
+    Voter voter;
 
     public PersonalSensivityToInsulinPage() {
         backButton.addActionListener(new ActionListener() {
@@ -47,9 +48,7 @@ public class PersonalSensivityToInsulinPage {
                             && kSamplesOfPhysicalActivity<=10 && kSamplesDropsInBloodSugar>=15 && kSamplesDropsInBloodSugar<=100)
                     {
                         // FAZER AQUI CHAMADA A FUNCAO!
-                        Voter voter = new Voter();
-
-                        //voter.
+                        voter = new Voter();
                         try {
                             sleep(4000);
                         } catch (InterruptedException e1) {
@@ -64,6 +63,17 @@ public class PersonalSensivityToInsulinPage {
                 } catch (NumberFormatException n){
                     textField1.setText("Invalid Input");
                 }
+            }
+        });
+
+        seeDetailsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame detailsFrame = new JFrame("Details");
+                detailsFrame.setContentPane(new Details(voter).DetailsView);
+                detailsFrame.setResizable(false);
+                detailsFrame.pack();
+                detailsFrame.setVisible(true);
             }
         });
     }

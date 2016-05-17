@@ -10,7 +10,7 @@ public class Details {
     public JPanel DetailsView;
 
     public Details(Voter voter){
-        System.out.print(voter.technicalDetail());
+        //System.out.print(voter.technicalDetail());
         textArea1.setText(voter.technicalDetail());
     }
 }

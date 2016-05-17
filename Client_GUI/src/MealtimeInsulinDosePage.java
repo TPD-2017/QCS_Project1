@@ -75,7 +75,7 @@ public class MealtimeInsulinDosePage {
         seeDetailsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame detailsFrame = new JFrame("Mealtime Insulin Calculator Details");
+                JFrame detailsFrame = new JFrame("Details");
                 detailsFrame.setContentPane(new Details(voter).DetailsView);
                 //detailsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 detailsFrame.setResizable(false);

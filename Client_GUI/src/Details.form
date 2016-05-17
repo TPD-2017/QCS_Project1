@@ -18,7 +18,7 @@
         </constraints>
         <properties>
           <font size="18"/>
-          <text value="Details"/>
+          <text value="Result Details"/>
         </properties>
       </component>
       <vspacer id="f32c5">
