@@ -43,27 +43,25 @@ public class PersonalSensivityToInsulinPage {
                 try {
                     int physicalActivityLevel = Integer.parseInt(i1);
                     String[] kspa = i2.trim().split("\\s*,\\s*");
-                    int[] kSamplesOfPhysicalActivity = new int[kspa.length];
+                    ArrayList<Integer> kSamplesOfPhysicalActivity = new ArrayList<Integer>();
                     System.out.println(kspa.length);
-                    for (int i=0; i<kspa.length; i++)
-                    {
-                        kSamplesOfPhysicalActivity[i] = Integer.parseInt(kspa[i]);
+                    for (String aKspa : kspa) {
+                        kSamplesOfPhysicalActivity.add(Integer.parseInt(aKspa));
                     }
                     String[] ksdbs = i3.trim().split("\\s*,\\s*");
-                    int[] kSamplesDropsInBloodSugar = new int[ksdbs.length];
+                    ArrayList<Integer> kSamplesDropsInBloodSugar = new ArrayList<Integer>();
                     System.out.println(ksdbs.length);
-                    for (int i=0; i<ksdbs.length; i++)
-                    {
-                        kSamplesDropsInBloodSugar[i] = Integer.parseInt(kspa[i]);
+                    for (String ksdb : ksdbs) {
+                        kSamplesDropsInBloodSugar.add(Integer.parseInt(ksdb));
                     }
                     //int kSamplesOfPhysicalActivity = Integer.parseInt(i2);
                     //int kSamplesDropsInBloodSugar = Integer.parseInt(i3);
 
-                    if(physicalActivityLevel>=0 && physicalActivityLevel<=10 && kspa.length>=0
-                            && kspa.length<=10 && kSamplesDropsInBloodSugar[0]>=15 && kSamplesDropsInBloodSugar[0]<=100)
+                    if(physicalActivityLevel>=0 && physicalActivityLevel<=10 && kspa.length==ksdbs.length)
                     {
                         // FAZER AQUI CHAMADA A FUNCAO!
                         voter = new Voter();
+                        voter.personalSensitivityToInsulin(physicalActivityLevel,kSamplesOfPhysicalActivity, kSamplesDropsInBloodSugar);
                         try {
                             sleep(4000);
                         } catch (InterruptedException e1) {
