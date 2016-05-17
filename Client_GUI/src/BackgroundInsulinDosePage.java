@@ -40,13 +40,13 @@ public class BackgroundInsulinDosePage {
                     if (weight>=40 && weight<=130) {
                         // FAZER AQUI CHAMADA A FUNCAO!
                         voter = new Voter();
-                        voter.calculateInsulinDose(weight);
-                        try {
+                        int result = voter.calculateInsulinDose(weight);
+                        /*try {
                             sleep(4000);
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
-                        }
-                        String result = voter.majority();
+                        }*/
+                        //String result = voter.majority();
                         textField1.setText(result+"");
                         seeDetailsButton.setEnabled(true);
                     } else {
