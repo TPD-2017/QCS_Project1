@@ -54,13 +54,13 @@ public class MealtimeInsulinDosePage {
                             && targetBloodSugarLevel>=80 && targetBloodSugarLevel<=120 && individualSensivity>=15 && individualSensivity<=100) {
                         // FAZER AQUI CHAMADA A FUNCAO
                         voter = new Voter();
-                        voter.mealtimeInsulinDose(carbohydratesInTheMeal, carbohydratesProcessedBy1UnitOfInsulin, actualBloodSugarLevel, targetBloodSugarLevel, individualSensivity);
+                        int result = voter.mealtimeInsulinDose(carbohydratesInTheMeal, carbohydratesProcessedBy1UnitOfInsulin, actualBloodSugarLevel, targetBloodSugarLevel, individualSensivity);
                         try {
                             sleep(4000);
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
                         }
-                        String result =voter.majority();
+                        //String result =voter.majority();
                         textField1.setText(result+"");
                         seeDetailsButton.setEnabled(true);
                     } else {
@@ -77,7 +77,6 @@ public class MealtimeInsulinDosePage {
             public void actionPerformed(ActionEvent e) {
                 JFrame detailsFrame = new JFrame("Details");
                 detailsFrame.setContentPane(new Details(voter).DetailsView);
-                //detailsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 detailsFrame.setResizable(false);
                 detailsFrame.pack();
                 detailsFrame.setVisible(true);
