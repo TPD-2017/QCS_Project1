@@ -60,13 +60,9 @@ public class Voter {
         technical_details.put("webservices", 3);
         technical_details.put("majority", 0);
 
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
-
+        webservicesList.add(webservices.remove(0));
+        webservicesList.add(webservices.remove(0));
+        webservicesList.add(webservices.remove(0));
 
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
@@ -128,12 +124,9 @@ public class Voter {
         technical_details.put("webservices", 3);
         technical_details.put("majority", 0);
 
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
+        webservicesList.add(webservices.remove(0));
+        webservicesList.add(webservices.remove(0));
+        webservicesList.add(webservices.remove(0));
 
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
@@ -195,12 +188,9 @@ public class Voter {
         technical_details.put("webservices", 3);
         technical_details.put("majority", 0);
 
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
-        webservicesList.add(webservices.get(0));
-        webservices.remove(0);
+        webservicesList.add(webservices.remove(0));
+        webservicesList.add(webservices.remove(0));
+        webservicesList.add(webservices.remove(0));
 
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
