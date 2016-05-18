@@ -55,12 +55,6 @@ public class MealtimeInsulinDosePage {
                         // FAZER AQUI CHAMADA A FUNCAO
                         voter = new Voter();
                         int result = voter.mealtimeInsulinDose(carbohydratesInTheMeal, carbohydratesProcessedBy1UnitOfInsulin, actualBloodSugarLevel, targetBloodSugarLevel, individualSensivity);
-                        try {
-                            sleep(4000);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
-                        //String result =voter.majority();
                         textField1.setText(result+"");
                         seeDetailsButton.setEnabled(true);
                     } else {
@@ -79,6 +73,7 @@ public class MealtimeInsulinDosePage {
                 detailsFrame.setContentPane(new Details(voter).DetailsView);
                 detailsFrame.setResizable(false);
                 detailsFrame.pack();
+                detailsFrame.setLocationRelativeTo(null);
                 detailsFrame.setVisible(true);
             }
         });
