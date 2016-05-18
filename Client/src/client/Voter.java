@@ -235,9 +235,8 @@ public class Voter {
         for(Map.Entry<Integer, Integer> x: results.entrySet()){
             System.out.println(x.getKey());
             //Metade do numero total de webservices testados
-            if (x.getValue() > max && x.getValue() >= (results.size() / 2)) {
+            if (x.getValue() >= (3 / 2)) {
                 mostFrequent = x.getKey();
-                max = x.getValue();
             }
         }
         this.mostfreqent = mostFrequent;
