@@ -23,6 +23,7 @@ public class Voter {
         results = new HashMap<>();
         webservices = new ArrayList<>();
 
+        //webservices.add(new WebServiceHandler("\thttp://localhost:8080/?wsdl","InsulinDoseCalculator", "InsulinDoseCalculatorPort", "http://server/", this));
         webservices.add(new WebServiceHandler("http://qcsproject1-qcsproject.rhcloud.com/InsulinDoseCalculator/?wsdl","InsulinDoseCalculator", "InsulinDoseCalculatorPort", "http://server/", this));
         webservices.add(new WebServiceHandler("http://qcsa1-beardsdei.rhcloud.com/qcsa1/InsulinDoseCalculator?wsdl","InsulinDoseCalculatorService", "InsulinDoseCalculatorPort", "http://server/", this));
         webservices.add(new WebServiceHandler("http://insulincalculator-aybareon.rhcloud.com:80/InsulinCalculatorTomcat/InsulinCalculator?wsdl","InsulinCalculator", "InsulinCalculatorPort", "http://server/", this));
@@ -60,8 +61,12 @@ public class Voter {
         technical_details.put("majority", 0);
 
         webservicesList.add(webservices.get(0));
-        webservicesList.add(webservices.get(1));
-        webservicesList.add(webservices.get(2));
+        webservices.remove(0);
+        webservicesList.add(webservices.get(0));
+        webservices.remove(0);
+        webservicesList.add(webservices.get(0));
+        webservices.remove(0);
+
 
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
@@ -73,7 +78,7 @@ public class Voter {
             x.start();
         }
         limitTime = System.currentTimeMillis()+4*1000;
-        while(System.currentTimeMillis() < limitTime || done<3){
+        while(System.currentTimeMillis() < limitTime && done<3){
             ListIterator<Thread> iterator = threadList.listIterator();
             while(iterator.hasNext()){
                 Thread x = iterator.next();
@@ -88,7 +93,8 @@ public class Voter {
                             }
                             Integer valor = technical_details.get("webservices");
                             technical_details.put("webservices", (valor==null)?1:valor+1);
-                            Thread n = new Thread(() -> webservices.get(random.nextInt(webservices.size())).calculateInsulinDose(bodyWeight));
+                            int position = random.nextInt(webservices.size()-1);
+                            Thread n = new Thread(() -> webservices.remove(position).calculateInsulinDose(bodyWeight));
                             n.start();
                             iterator.add(n);
                         } else {
@@ -103,6 +109,8 @@ public class Voter {
                 System.out.println("Had to interrupt");
                 x.interrupt();
                 results.put(-1, (results.get(-1) == null) ? 1 : results.get(-1) + 1);
+                Integer valor = this.technical_details.get("timeout");
+                this.technical_details.put("timeout", (valor == null) ? 1 : valor + 1);
             }
         }
         return majority();
@@ -121,8 +129,11 @@ public class Voter {
         technical_details.put("majority", 0);
 
         webservicesList.add(webservices.get(0));
-        webservicesList.add(webservices.get(1));
-        webservicesList.add(webservices.get(2));
+        webservices.remove(0);
+        webservicesList.add(webservices.get(0));
+        webservices.remove(0);
+        webservicesList.add(webservices.get(0));
+        webservices.remove(0);
 
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
@@ -134,7 +145,7 @@ public class Voter {
             x.start();
         }
         limitTime = System.currentTimeMillis()+4*1000;
-        while(System.currentTimeMillis() < limitTime || done<3){
+        while(System.currentTimeMillis() < limitTime && done<3){
             ListIterator<Thread> iterator = threadList.listIterator();
             while(iterator.hasNext()){
                 Thread x = iterator.next();
@@ -149,7 +160,8 @@ public class Voter {
                             }
                             Integer valor = technical_details.get("webservices");
                             technical_details.put("webservices", (valor==null)?1:valor+1);
-                            Thread n = new Thread(() -> webservices.get(random.nextInt(webservices.size())).mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity));
+                            int position = random.nextInt(webservices.size()-1);
+                            Thread n = new Thread(() -> webservices.remove(position).mealtimeInsulinDose(carbohydrateAmount, carbohydrateToInsulinRatio, preMealBloodSugar, targetBloodSugar, personalSensitivity));
                             n.start();
                             iterator.add(n);
                         } else {
@@ -164,6 +176,8 @@ public class Voter {
                 System.out.println("Had to interrupt");
                 x.interrupt();
                 results.put(-1, (results.get(-1) == null) ? 1 : results.get(-1) + 1);
+                Integer valor = this.technical_details.get("timeout");
+                this.technical_details.put("timeout", (valor == null) ? 1 : valor + 1);
             }
         }
         return majority();
@@ -182,8 +196,11 @@ public class Voter {
         technical_details.put("majority", 0);
 
         webservicesList.add(webservices.get(0));
-        webservicesList.add(webservices.get(1));
-        webservicesList.add(webservices.get(2));
+        webservices.remove(0);
+        webservicesList.add(webservices.get(0));
+        webservices.remove(0);
+        webservicesList.add(webservices.get(0));
+        webservices.remove(0);
 
         this.results.clear();
         //WebServiceHandler webservice = webservices.get(0);
@@ -195,7 +212,7 @@ public class Voter {
             x.start();
         }
         limitTime = System.currentTimeMillis()+4*1000;
-        while(System.currentTimeMillis() < limitTime || done<3){
+        while(System.currentTimeMillis() < limitTime && done<3){
             ListIterator<Thread> iterator = threadList.listIterator();
             while(iterator.hasNext()){
                 Thread x = iterator.next();
@@ -210,7 +227,9 @@ public class Voter {
                             }
                             Integer valor = technical_details.get("webservices");
                             technical_details.put("webservices", (valor==null)?1:valor+1);
-                            Thread n = new Thread(()->webservices.get(random.nextInt(webservices.size())).personalSensitivityToInsulin(physicalActivityLevel, physicalActivitySamples, bloodSugarDropSamples));
+                            int position = random.nextInt(webservices.size());
+                            System.out.print("NUMERO: "+position+" Size: "+webservices.size());
+                            Thread n = new Thread(()->webservices.remove(position).personalSensitivityToInsulin(physicalActivityLevel, physicalActivitySamples, bloodSugarDropSamples));
                             n.start();
                             iterator.add(n);
                         } else {
@@ -225,6 +244,8 @@ public class Voter {
                 System.out.println("Had to interrupt");
                 x.interrupt();
                 results.put(-1, (results.get(-1) == null) ? 1 : results.get(-1) + 1);
+                Integer valor = this.technical_details.get("timeout");
+                this.technical_details.put("timeout", (valor == null) ? 1 : valor + 1);
             }
         }
         return majority();
